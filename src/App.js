@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Square from "./components/Square/Square";
+import Result from "./components/Result/Result";
 import "./App.css";
 
 const App = () => {
@@ -70,6 +71,25 @@ const App = () => {
     if (p.every((position) => position !== "empty")) return "Its tie";
   };
 
+  const winner = detectWinner(state.positions);
+
+  function reset() {
+    setState({
+      player: "circle",
+      positions: [
+        "empty",
+        "empty",
+        "empty",
+        "empty",
+        "empty",
+        "empty",
+        "empty",
+        "empty",
+        "empty",
+      ],
+    });
+  }
+
   return (
     <div className="app">
       <div className="grid">
@@ -83,6 +103,7 @@ const App = () => {
         <Square position={7} value={state.positions[7]} takeTurn={takeTurn} />
         <Square position={8} value={state.positions[8]} takeTurn={takeTurn} />
       </div>
+      {winner && <Result winner={winner} reset={reset} />}
     </div>
   );
 };
