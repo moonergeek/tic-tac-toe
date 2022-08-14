@@ -4,13 +4,13 @@ import "./Square.css";
 
 const Square = ({ position, value, takeTurn }) => {
   const handleClick = () => {
-    if (value == "empty") takeTurn(position);
+    if (value === "empty") takeTurn(position);
   };
 
   return (
     <div className="square" onClick={handleClick}>
-      {value == "circle" && <Circle />}
-      {value == "cross" && <Cross />}
+      {value === "circle" && <Circle />}
+      {value === "cross" && <Cross />}
     </div>
   );
 };

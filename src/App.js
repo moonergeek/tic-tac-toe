@@ -22,10 +22,52 @@ const App = () => {
     const positions = [...state.positions];
     positions[position] = state.player;
 
-    setState(
-      { player: state.player == "circle" ? "cross" : "circle" },
-      positions
-    );
+    setState({
+      player: state.player === "circle" ? "cross" : "circle",
+      positions,
+    });
+  };
+
+  const detectWinner = (p) => {
+    if (p[0] === "circle" && p[1] === "circle" && p[2] === "circle")
+      return "circle";
+    if (p[3] === "circle" && p[4] === "circle" && p[5] === "circle")
+      return "circle";
+    if (p[6] === "circle" && p[7] === "circle" && p[8] === "circle")
+      return "circle";
+
+    if (p[0] === "circle" && p[3] === "circle" && p[6] === "circle")
+      return "circle";
+    if (p[1] === "circle" && p[4] === "circle" && p[7] === "circle")
+      return "circle";
+    if (p[2] === "circle" && p[5] === "circle" && p[8] === "circle")
+      return "circle";
+
+    if (p[0] === "circle" && p[4] === "circle" && p[8] === "circle")
+      return "circle";
+    if (p[2] === "circle" && p[4] === "circle" && p[6] === "circle")
+      return "circle";
+
+    if (p[0] === "cross" && p[1] === "cross" && p[2] === "cross")
+      return "cross";
+    if (p[3] === "cross" && p[4] === "cross" && p[5] === "cross")
+      return "cross";
+    if (p[6] === "cross" && p[7] === "cross" && p[8] === "cross")
+      return "cross";
+
+    if (p[0] === "cross" && p[3] === "cross" && p[6] === "cross")
+      return "cross";
+    if (p[1] === "cross" && p[4] === "cross" && p[7] === "cross")
+      return "cross";
+    if (p[2] === "cross" && p[5] === "cross" && p[8] === "cross")
+      return "cross";
+
+    if (p[0] === "cross" && p[4] === "cross" && p[8] === "cross")
+      return "cross";
+    if (p[2] === "cross" && p[4] === "cross" && p[6] === "cross")
+      return "cross";
+
+    if (p.every((position) => position !== "empty")) return "Its tie";
   };
 
   return (
