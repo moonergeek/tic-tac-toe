@@ -1,10 +1,10 @@
-import Styles from "./Square.module.css";
 import Circle from "../Circle/Circle";
-import Cross from '../Cross/Cross';
+import Cross from "../Cross/Cross";
+import "./Square.css";
 
 const Square = ({ position }) => {
   return (
-    <div className={Styles.square}>
+    <div className="square">
       <Cross />
     </div>
   );
